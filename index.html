@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bianca Soberana - Dirigente Espiritual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital@0;1&family=Prata&display=swap');
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0f0f1e 100%);
+            color: #e8d4c0;
+            line-height: 1.8;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+
+        /* Animação de fundo */
+        @keyframes floatingOrbs {
+            0%, 100% { transform: translateY(0px); opacity: 0.1; }
+            50% { transform: translateY(-20px); opacity: 0.2; }
+        }
+
+        .background-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: floatingOrbs 6s ease-in-out infinite;
+        }
+
+        .orb-1 { width: 300px; height: 300px; background: rgba(200, 50, 50, 0.3); top: 10%; left: 10%; animation-delay: 0s; }
+        .orb-2 { width: 400px; height: 400px; background: rgba(200, 100, 30, 0.2); top: 60%; right: 10%; animation-delay: 2s; }
+        .orb-3 { width: 350px; height: 350px; background: rgba(100, 30, 150, 0.2); bottom: 10%; left: 40%; animation-delay: 4s; }
+
+        /* Header */
+        header {
+            position: relative;
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(20,10,30,0.7) 100%);
+            border-bottom: 3px solid #c83232;
+            box-shadow: 0 10px 40px rgba(200, 50, 50, 0.3);
+        }
+
+        header::before {
+            content: "🕯️ ☠️ 🕯️";
+            display: block;
+            font-size: 2em;
+            margin-bottom: 20px;
+            letter-spacing: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 0 0 30px rgba(200, 50, 50, 0.8), 0 0 60px rgba(200, 50, 50, 0.4);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #d4a574;
+            font-style: italic;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(212, 165, 116, 0.5);
+        }
+
+        .decorative-line {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c83232, transparent);
+            margin: 20px auto;
+            box-shadow: 0 0 15px rgba(200, 50, 50, 0.6);
+        }
+
+        /* Navegação */
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #c83232;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        nav a {
+            color: #d4a574;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::before {
+            content: "✦";
+            margin-right: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #c83232;
+            text-shadow: 0 0 20px rgba(200, 50, 50, 0.6);
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Seções */
+        section {
+            margin: 80px 0;
+            scroll-behavior: smooth;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            color: #fff;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 20px rgba(200, 50, 50, 0.6);
+        }
+
+        section h2::before {
+            content: "🌹";
+            display: block;
+            margin-bottom: 15px;
+            font-size: 2.5em;
+        }
+
+        /* Seção About */
+        .about-content {
+            background: rgba(30, 10, 40, 0.6);
+            padding: 50px;
+            border: 2px solid #c83232;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(200, 50, 50, 0.3), inset 0 0 30px rgba(200, 50, 50, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content::before {
+            content: "☠️";
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3em;
+            opacity: 0.15;
+        }
+
+        .about-content::after {
+            content: "☠️";
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+            font-size: 3em;
+            opacity: 0.15;
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            line-height: 2;
+            color: #e8d4c0;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+            text-align: justify;
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight {
+            color: #d4a574;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
+        }
+
+        /* Seção Especialidades */
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .specialty-card {
+            background: linear-gradient(135deg, rgba(200, 50, 50, 0.15) 0%, rgba(100, 30, 150, 0.15) 100%);
+            border: 2px solid #c83232;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialty-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(200, 50, 50, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(200, 50, 50, 0.4);
+            border-color: #d4a574;
+        }
+
+        .specialty-card:hover::before {
+            left: 100%;
+        }
+
+        .specialty-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .specialty-card h3 {
+            font-size: 1.4em;
+            color: #d4a574;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .specialty-card p {
+            color: #e8d4c0;
+            font-size: 0.95em;
+        }
+
+        /* Seção Timeline */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #c83232 0%, transparent 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 52%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 52%;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #c83232;
+            border: 4px solid #0a0a0a;
+            border-radius: 50%;
+            top: 20px;
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(200, 50, 50, 0.6);
+        }
+
+        .timeline-content {
+            background: rgba(30, 10, 40, 0.6);
+            padding: 25px;
+            border-left: 3px solid #c83232;
+            border-radius: 5px;
+        }
+
+        .timeline-content h3 {
+            color: #d4a574;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .timeline-content p {
+            color: #e8d4c0;
+            font-size: 0.95em;
+        }
+
+        /* Seção Serviços */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-box {
+            background: linear-gradient(135deg, rgba(100, 30, 150, 0.2) 0%, rgba(200, 50, 50, 0.2) 100%);
+            border: 2px solid #d4a574;
+            padding: 35px;
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .service-box:hover {
+            border-color: #c83232;
+            box-shadow: 0 0 30px rgba(200, 50, 50, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .service-box h3 {
+            color: #d4a574;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-family: 'Cinzel', serif;
+        }
+
+        .service-box p {
+            color: #e8d4c0;
+            line-height: 1.7;
+        }
+
+        /* Contato */
+        .contact-section {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 60px 40px;
+            border: 2px solid #c83232;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(200, 50, 50, 0.3);
+        }
+
+        .contact-section h2 {
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            background: rgba(200, 50, 50, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #c83232;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(200, 50, 50, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-item h3 {
+            color: #d4a574;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .contact-item p {
+            color: #e8d4c0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #c83232 0%, #8b2424 100%);
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(200, 50, 50, 0.5);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(200, 50, 50, 0.8);
+            background: linear-gradient(135deg, #ff4444 0%, #c83232 100%);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(20,10,30,0.95) 100%);
+            color: #d4a574;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 3px solid #c83232;
+            margin-top: 80px;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+
+        .footer-symbols {
+            font-size: 1.5em;
+            letter-spacing: 15px;
+            margin: 20px 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            section h2 {
+                font-size: 2em;
+            }
+
+            .about-content {
+                padding: 30px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 80px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .contact-section {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            header {
+                padding: 40px 10px 30px;
+            }
+
+            section h2 {
+                font-size: 1.6em;
+            }
+
+            .about-content {
+                padding: 20px;
+            }
+
+            nav ul {
+                gap: 10px;
+                flex-direction: column;
+            }
+
+            nav a {
+                font-size: 0.9em;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <header>
+        <h1>Bianca Soberana</h1>
+        <p class="subtitle">Alma Velha • Mulher Medicina • Dirigente Espiritual</p>
+        <div class="decorative-line"></div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#jornada">Jornada</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Seção Sobre -->
+        <section id="sobre">
+            <h2>Minha Essência</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Eu sou <span class="highlight">Bianca Soberana</span> — <span class="highlight">alma velha, mulher medicina, dirigente espiritual, cartomante, terapeuta, psicanalista e canal.</span>
+                    </p>
+
+                    <p>
+                        Desde os meus <span class="highlight">5 anos de idade</span>, eu carrego o selo do espiritual marcado na alma. Enquanto outras crianças sonhavam com o futuro tradicional, eu já sentia que a minha missão não era estudar, crescer, casar e ter filhos. Eu ouvia vozes, percebia presenças, recebia mensagens que chegavam ao meu intelecto. Por muito tempo, acreditei que era Jesus me falando.
+                    </p>
+
+                    <p>
+                        <span class="highlight">Até que, aos 23 anos, tudo fez sentido:</span> meu despertar espiritual chegou como um chamado sem volta.
+                    </p>
+
+                    <p>
+                        Mergulhei em <span class="highlight">estudos, iniciações, rituais, tradições, ciências ocultas, forças ancestrais e terapias da alma.</span> Fui fundo. Fui fundo demais. E renasci como guia. Como canal. Como ponte entre mundos.
+                    </p>
+
+                    <p>
+                        <span class="highlight">Hoje, com quase 39 anos</span>, sou a fundadora do <span class="highlight">Templo de Alta Magia Estrela do Amanhecer</span>, onde guio mulheres e homens em seus processos de cura, libertação, empoderamento e reconexão com a própria essência.
+                    </p>
+
+                    <p>
+                        Sou <span class="highlight">Dirigente Espiritual Psicanalista Cartomante Terapeuta Holística Especialista em códigos secretos de propriedades e Estratégias inteligentes Mameto de Kimbanda.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Especialidades -->
+        <section id="especialidades">
+            <h2>Minhas Especialidades</h2>
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <div class="specialty-icon">🃏</div>
+                    <h3>Cartomancia</h3>
+                    <p>Leitura profunda de cartas para desvendar caminhos, propósitos e revelações ocultas da sua jornada.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">✨</div>
+                    <h3>Canal Espiritual</h3>
+                    <p>Conexão direta com planos sutis para receber mensagens, guia ancestral e sabedoria universal.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">🕯️</div>
+                    <h3>Rituais Sagrados</h3>
+                    <p>Cerimônias ancestrais de Kimbanda e Magia Alta para transformação profunda e libertação energética.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">💫</div>
+                    <h3>Terapia Holística</h3>
+                    <p>Integração corpo, mente e espírito para cura integral, libertação de padrões e empoderamento pessoal.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">🧠</div>
+                    <h3>Psicanálise Espiritual</h3>
+                    <p>Análise profunda do inconsciente alinhada com sabedoria espiritual para transformação interior.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">🌹</div>
+                    <h3>Mulher Medicina</h3>
+                    <p>Guia de mulheres em sua reconexão com o poder sagrado feminino e sua missão encarnada.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Jornada -->
+        <section id="jornada">
+            <h2>Minha Jornada Espiritual</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>O Chamado (5 anos)</h3>
+                        <p>Primeiros sinais do espiritual. Vozes, presenças e mensagens que marcariam meu destino para sempre.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>O Despertar (23 anos)</h3>
+                        <p>Momento de ruptura e reconhecimento. Aquilo que eu ouvia finalmente ganhou nome, forma e propósito.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Os Estudos Profundos</h3>
+                        <p>Mergulho em iniciações, rituais, ciências ocultas, tradições ancestrais e forças que movem mundos.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>O Renascimento</h3>
+                        <p>Da morte do ser convencional, emergiu a ponte entre mundos. Canal. Guia. Dirigente Espiritual.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Templo de Alta Magia (Hoje)</h3>
+                        <p>Fundação e liderança do Templo Estrela do Amanhecer, guiando almas em cura, libertação e empoderamento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Serviços -->
+        <section id="servicos">
+            <h2>Serviços Oferecidos</h2>
+            <div class="services">
+                <div class="service-box">
+                    <h3>Sessões de Cartomancia</h3>
+                    <p>Consultas profundas e orientadas por entidades para revelar caminhos, desafios e revelações que você precisa conhecer neste momento.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Sessões de Canalização</h3>
+                    <p>Conexão direta com planos espirituais para receber mensagens, orientação ancestral e sabedoria que transcende a consciência comum.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Rituais de Libertação</h3>
+                    <p>Cerimônias ancestrais poderosas para liberar traumas, padrões, maldições e energias densas que aprisionam sua essência.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Análise Psicanalítica Espiritual</h3>
+                    <p>Mergulho no inconsciente integrado à sabedoria espiritual para compreender e transformar raízes profundas.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Terapias Holísticas</h3>
+                    <p>Tratamentos integradores que equilibram corpo, mente, emoção e espírito para cura total e reconexão.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Programas de Empoderamento</h3>
+                    <p>Acompanhamento contínuo para mulheres e homens em jornadas de transformação, cura e reconexão com poder pessoal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contato">
+            <div class="contact-section">
+                <h2>Conecte-se Comigo</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📱 Whatsapp</h3>
+                        <p><a href="tel:+5511961736294" style="color: #d4a574; text-decoration: none;">+55 (11) 96173-6294</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📧 Email</h3>
+                        <p><a href="mailto:terapeutadasuavida@gmail.com" style="color: #d4a574; text-decoration: none;">terapeutadasuavida@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; background: rgba(30, 10, 40, 0.6); padding: 50px; border: 2px solid #c83232; border-radius: 10px; box-shadow: 0 0 30px rgba(200, 50, 50, 0.3);">
+                <h3 style="text-align: center; color: #d4a574; font-size: 1.8em; margin-bottom: 40px; font-family: 'Cinzel', serif;">✨ Agendar Consulta ✨</h3>
+                <form id="agendamento-form" style="display: grid; gap: 20px;">
+                    <div>
+                        <label for="nome" style="display: block; color: #d4a574; margin-bottom: 8px; font-weight: 600;">Nome da Cliente *</label>
+                        <input type="text" id="nome" name="nome" required style="width: 100%; padding: 12px; background: rgba(0, 0, 0, 0.5); border: 2px solid #c83232; border-radius: 5px; color: #e8d4c0; font-family: 'Crimson Text', serif; font-size: 1em;" placeholder="Seu nome completo">
+                    </div>
+
+                    <div>
+                        <label for="telefone" style="display: block; color: #d4a574; margin-bottom: 8px; font-weight: 600;">Telefone / Whatsapp *</label>
+                        <input type="tel" id="telefone" name="telefone" required style="width: 100%; padding: 12px; background: rgba(0, 0, 0, 0.5); border: 2px solid #c83232; border-radius: 5px; color: #e8d4c0; font-family: 'Crimson Text', serif; font-size: 1em;" placeholder="(11) 9XXXX-XXXX">
+                    </div>
+
+                    <div>
+                        <label for="email" style="display: block; color: #d4a574; margin-bottom: 8px; font-weight: 600;">Email *</label>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 12px; background: rgba(0, 0, 0, 0.5); border: 2px solid #c83232; border-radius: 5px; color: #e8d4c0; font-family: 'Crimson Text', serif; font-size: 1em;" placeholder="seu@email.com">
+                    </div>
+
+                    <div>
+                        <label for="motivo" style="display: block; color: #d4a574; margin-bottom: 8px; font-weight: 600;">Motivo da Consulta *</label>
+                        <textarea id="motivo" name="motivo" required rows="4" style="width: 100%; padding: 12px; background: rgba(0, 0, 0, 0.5); border: 2px solid #c83232; border-radius: 5px; color: #e8d4c0; font-family: 'Crimson Text', serif; font-size: 1em; resize: none;" placeholder="Descreva brevemente o motivo da sua consulta..."></textarea>
+                    </div>
+
+                    <button type="submit" class="cta-button" style="margin-top: 20px; width: 100%;">Solicitar Agendamento</button>
+                </form>
+                <p style="text-align: center; color: #d4a574; margin-top: 30px; font-size: 0.9em;">Você receberá uma confirmação no seu email ou Whatsapp em breve.</p>
+            </div>
+
+            <script>
+                document.getElementById('agendamento-form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nome = document.getElementById('nome').value;
+                    const telefone = document.getElementById('telefone').value;
+                    const email = document.getElementById('email').value;
+                    const motivo = document.getElementById('motivo').value;
+                    
+                    const mensagem = `Olá! Gostaria de agendar uma consulta.\n\nNome: ${nome}\nTelefone: ${telefone}\nEmail: ${email}\nMotivo: ${motivo}`;
+                    
+                    const whatsappLink = `https://wa.me/5511961736294?text=${encodeURIComponent(mensagem)}`;
+                    window.open(whatsappLink, '_blank');
+                    
+                    this.reset();
+                });
+            </script>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-symbols">🕯️ ☠️ 🌹 ☠️ 🕯️</div>
+        <p>© 2026 𝕭𝖎𝖆𝖓𝖈𝖆 S͙𝖔𝖇𝖊𝖗𝖆𝖓𝖆⛧ — Templo de Alta Magia Estrela do Amanhecer</p>
+        <p>Ponte entre mundos • Guia espiritual • Canal de sabedoria</p>
+    </footer>
+</body>
+</html>
